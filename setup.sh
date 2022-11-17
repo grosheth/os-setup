@@ -16,18 +16,24 @@ OS=$(uname -r)
 
 
 package_install () {
-
     for i in $PROGRAMS
     do
         echo -e "${YELLOW} --- installation de $i ---"
         sudo $1 $2 $i $3;
         echo -e "${GREEN} --- Done ---"
     done
+}
+
+copy_files () {
+
+    cat $1 > $2
+    if [ -z $3 ]; then
+        cat $2
+    fi
 
 }
 
 arch_install () {
-
     # update system
     sudo pacman -Syu --noconfirm
 
@@ -36,17 +42,18 @@ arch_install () {
 
     # Replace .zshrc
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---"
-    cat alias/.zshrc > ~/.zshrc
-    cat ~/.zshrc
+    copy_files alias/.zshrc ~/.zshrc
     echo -e "${GREEN} --- Done ---"
 
     #.bashrc
-    echo -e "${YELLOW} --- Mise a jour du ..bashrc ---"
-    cat alias/.bashrc > ~/.bashrc
-    cat ~/.bashrc
+    echo -e "${YELLOW} --- Mise a jour du .bashrc ---"
+    copy_files alias/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
 
-    
+    echo -e "${YELLOW} --- Mise a jour des clés ssh ---"
+    copy_files ssh_keys/id_rsa ~/.ssh/id_rsa ssh
+    copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub ssh
+    echo -e "${GREEN} --- Done ---"
 }
 
 
