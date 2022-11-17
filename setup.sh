@@ -43,7 +43,6 @@ arch_install () {
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---"
     copy_files alias/.zshrc ~/.zshrc
     echo -e "${GREEN} --- Done ---"
-GREEN
     #.bashrc
     echo -e "${YELLOW} --- Mise a jour du .bashrc ---"
     copy_files alias/.bashrc ~/.bashrc
