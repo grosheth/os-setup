@@ -28,5 +28,5 @@ echo -e "${YELLOW} --- Mise a jour du .zshrc ---"
 
 # Replace .zshrc
 cat alias/.zshrc > ~/.zshrc
-cat alias/.zshrc
+cat ~/.zshrc
 echo -e "${GREEN} --- Done ---"
