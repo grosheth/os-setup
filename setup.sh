@@ -50,7 +50,7 @@ arch_install () {
     copy_files alias/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
 
-    echo -e "${YELLOW} --- Mise a jour des clés ssh ---"
+    echo -e "${YELLOW} --- Mise a jour des clées ssh ---"
     copy_files ssh_keys/id_rsa ~/.ssh/id_rsa ssh
     copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub ssh
     echo -e "${GREEN} --- Done ---"
@@ -74,16 +74,16 @@ debian_install () {
     copy_files alias/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
 
-    echo -e "${YELLOW} --- Mise a jour des clés ssh ---"
+    echo -e "${YELLOW} --- Mise a jour des clées ssh ---"
     copy_files ssh_keys/id_rsa ~/.ssh/id_rsa ssh
     copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub ssh
     echo -e "${GREEN} --- Done ---"
 }
 
-if [[ "arch" == *"$OS"* ]]; then
+if grep -q "arch" <<< "$OS"; then
   arch_install
 fi
 
-if [[ "debian" == *"$OS"* ]]; then
-  arch_install
+if grep -q "arch" <<< "$OS"; then
+  debian_install
 fi
