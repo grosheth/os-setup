@@ -91,4 +91,4 @@ if grep -q "debian" <<< "$OS"; then
   debian_install
 fi
 
-echo -e "${CYAN} Installation done"
+echo -e "${CYAN} --- Installation done ---"
