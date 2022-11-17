@@ -58,7 +58,6 @@ arch_install () {
 
 
 debian_install () {
-
     # update system
     sudo apt update && sudo apt upgrade -y
 
@@ -67,17 +66,24 @@ debian_install () {
 
     # Replace .zshrc
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---"
-    cat alias/.zshrc > ~/.zshrc
-    cat ~/.zshrc
+    copy_files alias/.zshrc ~/.zshrc
     echo -e "${GREEN} --- Done ---"
 
-    # Replace .bashrc
-    echo -e "${YELLOW} --- Mise a jour du ..bashrc ---"
-    cat alias/.bashrc > ~/.bashrc
-    cat ~/.bashrc
+    #.bashrc
+    echo -e "${YELLOW} --- Mise a jour du .bashrc ---"
+    copy_files alias/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
 
+    echo -e "${YELLOW} --- Mise a jour des clés ssh ---"
+    copy_files ssh_keys/id_rsa ~/.ssh/id_rsa ssh
+    copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub ssh
+    echo -e "${GREEN} --- Done ---"
 }
 
+if [[ "arch" == *"$OS"* ]]; then
+  arch_install
+fi
 
-arch_install
+if [[ "debian" == *"$OS"* ]]; then
+  arch_install
+fi
