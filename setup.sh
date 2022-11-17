@@ -25,12 +25,11 @@ package_install () {
 }
 
 copy_files () {
-
     cat $1 > $2
+
     if [ -z $3 ]; then
         cat $2
     fi
-
 }
 
 arch_install () {
