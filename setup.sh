@@ -40,10 +40,13 @@ arch_install () {
     cat ~/.zshrc
     echo -e "${GREEN} --- Done ---"
 
+    #.bashrc
     echo -e "${YELLOW} --- Mise a jour du ..bashrc ---"
     cat alias/.bashrc > ~/.bashrc
     cat ~/.bashrc
     echo -e "${GREEN} --- Done ---"
+
+    
 }
 
 
@@ -55,11 +58,16 @@ debian_install () {
     # Install all programs listed in the txt file
     package_install apt install -y
 
-    echo -e "${YELLOW} --- Mise a jour du .zshrc ---"
-
     # Replace .zshrc
+    echo -e "${YELLOW} --- Mise a jour du .zshrc ---"
     cat alias/.zshrc > ~/.zshrc
     cat ~/.zshrc
+    echo -e "${GREEN} --- Done ---"
+
+    # Replace .bashrc
+    echo -e "${YELLOW} --- Mise a jour du ..bashrc ---"
+    cat alias/.bashrc > ~/.bashrc
+    cat ~/.bashrc
     echo -e "${GREEN} --- Done ---"
 
 }
