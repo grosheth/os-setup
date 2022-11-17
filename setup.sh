@@ -84,6 +84,6 @@ if grep -q "arch" <<< "$OS"; then
   arch_install
 fi
 
-if grep -q "arch" <<< "$OS"; then
+if grep -q "debian" <<< "$OS"; then
   debian_install
 fi
