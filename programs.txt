@@ -3,3 +3,7 @@ wget
 curl
 zsh
 openssl
+steam
+discord
+spotify
+python

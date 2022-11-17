@@ -43,7 +43,7 @@ arch_install () {
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---"
     copy_files alias/.zshrc ~/.zshrc
     echo -e "${GREEN} --- Done ---"
-
+GREEN
     #.bashrc
     echo -e "${YELLOW} --- Mise a jour du .bashrc ---"
     copy_files alias/.bashrc ~/.bashrc
@@ -80,9 +80,15 @@ debian_install () {
 }
 
 if grep -q "arch" <<< "$OS"; then
+  echo -e "${CYAN} Your system is $OS"
+  sleep 2
   arch_install
 fi
 
 if grep -q "debian" <<< "$OS"; then
+  echo -e "${CYAN} Your system is $OS"
+  sleep 2
   debian_install
 fi
+
+echo -e "${CYAN} Installation done"
