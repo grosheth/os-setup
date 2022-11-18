@@ -37,10 +37,21 @@ copy_files () {
 arch_install () {
     # update system
     sudo pacman -Syu --noconfirm
-
     # Install all programs listed in the txt file
     package_install pacman -Syu --noconfirm
+    common_install
+}
 
+
+debian_install () {
+    # update system
+    sudo apt update && sudo apt upgrade -y
+    # Install all programs listed in the txt file
+    package_install apt install -y
+    common_install
+}
+
+common_install() {
     # .zshrc
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---${LIGHT_GREEN}"
     copy_files files/.zshrc ~/.zshrc
@@ -62,38 +73,6 @@ arch_install () {
         chown -R $i /home/$i/.local/share/konsole
         echo /home/$i/.local/share/konsole
         ls -la /home/$i/.local/share/konsole
-    done
-    echo -e "${GREEN} --- Done ---"
-}
-
-
-debian_install () {
-    # update system
-    sudo apt update && sudo apt upgrade -y
-
-    # Install all programs listed in the txt file
-    package_install apt install -y
-
-    # .zshrc
-    echo -e "${YELLOW} --- Mise a jour du .zshrc ---"
-    copy_files files/.zshrc ~/.zshrc
-    echo -e "${GREEN} --- Done ---"
-
-    # .bashrc
-    echo -e "${YELLOW} --- Mise a jour du .bashrc ---"
-    copy_files files/.bashrc ~/.bashrc
-    echo -e "${GREEN} --- Done ---"
-
-    echo -e "${YELLOW} --- Mise a jour des clées ssh ---"
-    copy_files ssh_keys/id_rsa ~/.ssh/id_rsa ssh
-    copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub ssh
-    echo -e "${GREEN} --- Done ---"
-
-    echo -e "${YELLOW} --- Ajout des config Konsole ---"
-    for i in $USERS
-    do
-        cp -r files/konsole /home/$i/.local/share/konsole
-        chown -R $i /home/$i/.local/share/konsole
     done
     echo -e "${GREEN} --- Done ---"
 }
