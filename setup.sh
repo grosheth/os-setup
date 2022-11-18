@@ -8,7 +8,6 @@ YELLOW='\033[1;33m'       # Yellow
 BLUE='\033[1;34m'         # Blue
 CYAN='\033[1;36m'         # Cyan
 WHITE='\033[1;37m'        # White
-
 LIGHT_GREEN='\033[0;32m'        # Green
 
 # vars
