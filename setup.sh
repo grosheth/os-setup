@@ -6,13 +6,15 @@ RED='\033[1;31m'          # Red
 GREEN='\033[1;32m'        # Green
 YELLOW='\033[1;33m'       # Yellow
 BLUE='\033[1;34m'         # Blue
-PURPLE='\033[1;35m'       # Purple
 CYAN='\033[1;36m'         # Cyan
 WHITE='\033[1;37m'        # White
+
+LIGHT_GREEN='\033[0;32m'        # Green
 
 # vars
 PROGRAMS=$(cat programs.txt)
 OS=$(uname -r)
+USERS=$(ls /home)
 
 
 package_install () {
@@ -39,18 +41,28 @@ arch_install () {
     # Install all programs listed in the txt file
     package_install pacman -Syu --noconfirm
 
-    # Replace .zshrc
-    echo -e "${YELLOW} --- Mise a jour du .zshrc ---"
-    copy_files alias/.zshrc ~/.zshrc
+    # .zshrc
+    echo -e "${YELLOW} --- Mise a jour du .zshrc ---${LIGHT_GREEN}"
+    copy_files files/.zshrc ~/.zshrc
     echo -e "${GREEN} --- Done ---"
-    #.bashrc
-    echo -e "${YELLOW} --- Mise a jour du .bashrc ---"
-    copy_files alias/.bashrc ~/.bashrc
+    # .bashrc
+    echo -e "${YELLOW} --- Mise a jour du .bashrc ---${LIGHT_GREEN}"
+    copy_files files/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
 
-    echo -e "${YELLOW} --- Mise a jour des clées ssh ---"
+    echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
     copy_files ssh_keys/id_rsa ~/.ssh/id_rsa ssh
     copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub ssh
+    echo -e "${GREEN} --- Done ---"
+
+    echo -e "${YELLOW} --- Ajout des config Konsole ---${LIGHT_GREEN}"
+    for i in $USERS
+    do
+        cp -r files/konsole /home/$i/.local/share/konsole
+        chown -R $i /home/$i/.local/share/konsole
+        echo /home/$i/.local/share/konsole
+        ls -la /home/$i/.local/share/konsole
+    done
     echo -e "${GREEN} --- Done ---"
 }
 
@@ -62,19 +74,27 @@ debian_install () {
     # Install all programs listed in the txt file
     package_install apt install -y
 
-    # Replace .zshrc
+    # .zshrc
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---"
-    copy_files alias/.zshrc ~/.zshrc
+    copy_files files/.zshrc ~/.zshrc
     echo -e "${GREEN} --- Done ---"
 
-    #.bashrc
+    # .bashrc
     echo -e "${YELLOW} --- Mise a jour du .bashrc ---"
-    copy_files alias/.bashrc ~/.bashrc
+    copy_files files/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
 
     echo -e "${YELLOW} --- Mise a jour des clées ssh ---"
     copy_files ssh_keys/id_rsa ~/.ssh/id_rsa ssh
     copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub ssh
+    echo -e "${GREEN} --- Done ---"
+
+    echo -e "${YELLOW} --- Ajout des config Konsole ---"
+    for i in $USERS
+    do
+        cp -r files/konsole /home/$i/.local/share/konsole
+        chown -R $i /home/$i/.local/share/konsole
+    done
     echo -e "${GREEN} --- Done ---"
 }
 
