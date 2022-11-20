@@ -61,8 +61,8 @@ common_install() {
     echo -e "${GREEN} --- Done ---"
 
     echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
-    copy_files ssh_keys/id_rsa ~/.ssh/id_rsa ssh
-    copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub ssh
+    copy_files ssh_keys/id_rsa ~/.ssh/id_rsa secret
+    copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub secret
     echo -e "${GREEN} --- Done ---"
 
     echo -e "${YELLOW} --- Ajout des config Konsole ---${LIGHT_GREEN}"
