@@ -42,9 +42,9 @@ shell_command () {
 
 arch_install () {
     # update system
-    #sudo pacman -Syu --noconfirm
+    sudo pacman -Syu --noconfirm
     #Install all programs listed in the txt file
-    #package_install pacman -Syu --noconfirm
+    package_install pacman -Syu --noconfirm
     common_install
 }
 
