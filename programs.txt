@@ -7,3 +7,5 @@ steam
 discord
 spotify
 python
+brave
+sqlite3

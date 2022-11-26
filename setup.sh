@@ -26,10 +26,20 @@ package_install () {
 }
 
 copy_files () {
-    cat $1 > $2
+    {
+        RETURN_CODE=$(cat $1 > $2)
+    } &> /dev/null
 
-    if [ -z $3 ]; then
-        cat $2
+    CMD_RETURN_CODE=$?
+
+    if [ $CMD_RETURN_CODE == 1 ]; then
+        echo -e "${RED}"
+        cat $1 > $2
+    else
+        if [ -z $3 ]; then
+            echo -e "${WHITE}first Lines of $2 ${LIGHT_GREEN}"
+            head --lines=10 $2
+        fi
     fi
 }
 
@@ -59,12 +69,28 @@ common_install() {
     echo -e "${YELLOW} --- Mise a jour du .bashrc ---${LIGHT_GREEN}"
     copy_files files/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
-
-    echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
-    copy_files ssh_keys/id_rsa ~/.ssh/id_rsa secret
-    copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub secret
+    # .Bookmarks
+    echo -e "${YELLOW} --- Mise a jour des bookmarks Brave ---${LIGHT_GREEN}"
+    copy_files files/Bookmarks ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
+    echo -e "${GREEN} --- Done ---"
+    # .Bookmarks
+    echo -e "${YELLOW} --- Mise a jour des bookmarks Chrome ---${LIGHT_GREEN}"
+    copy_files files/Bookmarks ~/.config/google-chrome/Default/Bookmarks
+    copy_files files/Bookmarks ~/.config/chromium/Default/Bookmarks
+    echo -e "${GREEN} --- Done ---"
+    # .Bookmarks
+    echo -e "${YELLOW} --- Mise a jour des bookmarks Firefox ---${LIGHT_GREEN}"
+    FIREFOX_PATH=$(cat ~/.mozilla/firefox/profiles.ini | grep .default-release | grep -v Name | grep -v Default)
+    FIREFOX_PROFILE="${FIREFOX_PATH:5}"
+    copy_files files/Bookmarks ~/.mozilla/firefox/${FIREFOX_PROFILE}/bookmarkbackups/Bookmarks.json
+    sqlite3 ~/.mozilla/firefox/${FIREFOX_PROFILE}/places.sqlite ".restore ~/.mozilla/firefox/${FIREFOX_PROFILE}/bookmarkbackups/Bookmarks.json"
     echo -e "${GREEN} --- Done ---"
 
+    echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
+    copy_files ssh_keys/id_rsa ~/.ssh/id_rsa nooutpout
+    copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub nooutpout
+    echo -e "${GREEN} --- Done ---"
+    # Konsole
     echo -e "${YELLOW} --- Ajout des config Konsole ---${LIGHT_GREEN}"
     for i in $USERS
     do
