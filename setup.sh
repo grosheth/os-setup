@@ -29,8 +29,9 @@ shell_command () {
     {
         COMMAND=$($@)
     } &> /dev/null
+
     CMD_RETURN_CODE=$?
-    #echo -e $1 $2 "${@:3}"
+    
     if [ $CMD_RETURN_CODE == 1 ]; then
         echo -e "${RED}"
         echo $@
