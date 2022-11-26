@@ -27,7 +27,7 @@ package_install () {
 
 shell_command () {
     {
-        RETURN_CODE=$($*)
+        RETURN_CODE=$($@)
     } &> /dev/null
     CMD_RETURN_CODE=$?
 
