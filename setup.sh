@@ -48,7 +48,6 @@ arch_install () {
     common_install
 }
 
-
 debian_install () {
     # update system
     sudo apt update && sudo apt upgrade -y
@@ -60,25 +59,25 @@ debian_install () {
 common_install() {
     # .zshrc
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---${LIGHT_GREEN}"
-    shell_command cat files/.zshrc ~/.zshrc
+    shell_command cat files/.zshrc > ~/.zshrc
     echo -e "${GREEN} --- Done ---"
     # .bashrc
     echo -e "${YELLOW} --- Mise a jour du .bashrc ---${LIGHT_GREEN}"
-    shell_command cat files/.bashrc ~/.bashrc
+    shell_command cat files/.bashrc > ~/.bashrc
     echo -e "${GREEN} --- Done ---"
     # .Bookmarks
     echo -e "${YELLOW} --- Mise a jour des bookmarks Brave ---${LIGHT_GREEN}"
-    shell_command cat files/Bookmarks ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
+    shell_command cat files/Bookmarks > ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
     # .Bookmarks
     echo -e "${YELLOW} --- Mise a jour des bookmarks Chrome ---${LIGHT_GREEN}"
-    shell_command cat files/Bookmarks ~/.config/google-chrome/Default/Bookmarks
-    shell_command cat files/Bookmarks ~/.config/chromium/Default/Bookmarks
+    shell_command cat files/Bookmarks > ~/.config/google-chrome/Default/Bookmarks
+    shell_command cat files/Bookmarks > ~/.config/chromium/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
 
     echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
-    shell_command cat ssh_keys/id_rsa ~/.ssh/id_rsa
-    shell_command cat ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub
+    shell_command cat ssh_keys/id_rsa > ~/.ssh/id_rsa
+    shell_command cat ssh_keys/id_rsa.pub > ~/.ssh/id_rsa.pub
     echo -e "${GREEN} --- Done ---"
     # Konsole
     echo -e "${YELLOW} --- Ajout des config Konsole ---${LIGHT_GREEN}"
