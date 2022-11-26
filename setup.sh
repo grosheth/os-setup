@@ -27,9 +27,8 @@ package_install () {
 
 shell_command () {
     {
-        COMMAND=$($@)
-    } &> /dev/null
-
+        COMMAND=$("$@")
+    }
     CMD_RETURN_CODE=$?
 
     if [ $CMD_RETURN_CODE == 1 ]; then
@@ -41,31 +40,11 @@ shell_command () {
     fi
 }
 
-cat_files () {
-    {
-        RETURN_CODE=$(cat $1 > $2)
-    } &> /dev/null
-
-    CMD_RETURN_CODE=$?
-
-    if [ $CMD_RETURN_CODE == 1 ]; then
-        echo -e "${RED}"
-        cat $1 > $2
-    else
-        if [ -z $3 ]; then
-            echo -e "${WHITE}first Lines of $2 ${LIGHT_GREEN}"
-            head --lines=10 $2
-        else
-            echo -e "${WHITE}---- Secret ----${LIGHT_GREEN}"
-        fi
-    fi
-}
-
 arch_install () {
     # update system
-    sudo pacman -Syu --noconfirm
+    #sudo pacman -Syu --noconfirm
     #Install all programs listed in the txt file
-    package_install pacman -Syu --noconfirm
+    #package_install pacman -Syu --noconfirm
     common_install
 }
 
@@ -82,25 +61,25 @@ common_install() {
     . vars.sh
     # .zshrc
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---${LIGHT_GREEN}"
-    cat_files files/.zshrc ~/.zshrc
+    shell_command cp files/.zshrc ~/.zshrc
     echo -e "${GREEN} --- Done ---"
     # .bashrc
     echo -e "${YELLOW} --- Mise a jour du .bashrc ---${LIGHT_GREEN}"
-    cat_files files/.bashrc ~/.bashrc
+    shell_command cp files/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
     # .Bookmarks
     echo -e "${YELLOW} --- Mise a jour des bookmarks Brave ---${LIGHT_GREEN}"
-    cat_files files/Bookmarks ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
+    shell_command cp files/Bookmarks ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
     # .Bookmarks
     echo -e "${YELLOW} --- Mise a jour des bookmarks Chrome ---${LIGHT_GREEN}"
-    cat_files files/Bookmarks ~/.config/google-chrome/Default/Bookmarks
-    cat_files files/Bookmarks ~/.config/chromium/Default/Bookmarks
+    shell_command cp files/Bookmarks ~/.config/google-chrome/Default/Bookmarks
+    shell_command cp files/Bookmarks ~/.config/chromium/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
 
     echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
-    cat_files ssh_keys/id_rsa ~/.ssh/id_rsa secret
-    cat_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub secret
+    shell_command cp ssh_keys/id_rsa ~/.ssh/id_rsa
+    shell_command cp ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub
     echo -e "${GREEN} --- Done ---"
     # Konsole
     echo -e "${YELLOW} --- Ajout des config Konsole ---${LIGHT_GREEN}"
@@ -110,13 +89,11 @@ common_install() {
         shell_command chown -R $i /home/$i/.local/share/konsole
     done
     echo -e "${GREEN} --- Done ---"
-    echo $USERNAME
     #Git
     echo -e "${YELLOW} --- Configurer l'utilisateur GIT ---${LIGHT_GREEN}"
-    git config --global user.name "$USERNAME"
-    git config --global user.email $EMAIL
+    shell_command git config --global user.name "$USERNAME"
+    shell_command git config --global user.email $EMAIL
     echo -e "${GREEN} --- Done ---"
-
 }
 
 if grep -q "arch" <<< "$OS"; then
