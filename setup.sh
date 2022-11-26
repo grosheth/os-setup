@@ -31,7 +31,7 @@ shell_command () {
     } &> /dev/null
 
     CMD_RETURN_CODE=$?
-    
+
     if [ $CMD_RETURN_CODE == 1 ]; then
         echo -e "${RED}"
         echo $@
@@ -78,6 +78,8 @@ debian_install () {
 }
 
 common_install() {
+    #source vars
+    . vars.sh
     # .zshrc
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---${LIGHT_GREEN}"
     cat_files files/.zshrc ~/.zshrc
@@ -108,6 +110,13 @@ common_install() {
         shell_command chown -R $i /home/$i/.local/share/konsole
     done
     echo -e "${GREEN} --- Done ---"
+    echo $USERNAME
+    #Git
+    echo -e "${YELLOW} --- Configurer l'utilisateur GIT ---${LIGHT_GREEN}"
+    git config --global user.name "$USERNAME"
+    git config --global user.email $EMAIL
+    echo -e "${GREEN} --- Done ---"
+
 }
 
 if grep -q "arch" <<< "$OS"; then
