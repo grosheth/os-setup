@@ -9,3 +9,4 @@ spotify
 python
 brave
 sqlite3
+jq
