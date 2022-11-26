@@ -78,14 +78,7 @@ common_install() {
     copy_files files/Bookmarks ~/.config/google-chrome/Default/Bookmarks
     copy_files files/Bookmarks ~/.config/chromium/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
-    # .Bookmarks
-    echo -e "${YELLOW} --- Mise a jour des bookmarks Firefox ---${LIGHT_GREEN}"
-    FIREFOX_PATH=$(cat ~/.mozilla/firefox/profiles.ini | grep .default-release | grep -v Name | grep -v Default)
-    FIREFOX_PROFILE="${FIREFOX_PATH:5}"
-    copy_files files/Bookmarks ~/.mozilla/firefox/${FIREFOX_PROFILE}/bookmarkbackups/Bookmarks.json
-    sqlite3 -json ~/.mozilla/firefox/${FIREFOX_PROFILE}/places.sqlite ".restore ~/.mozilla/firefox/${FIREFOX_PROFILE}/bookmarkbackups/Bookmarks.json"
-    echo -e "${GREEN} --- Done ---"
-
+    
     echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
     copy_files ssh_keys/id_rsa ~/.ssh/id_rsa nooutpout
     copy_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub nooutpout
