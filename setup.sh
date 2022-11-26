@@ -27,19 +27,16 @@ package_install () {
 
 shell_command () {
     {
-        RETURN_CODE=$($@)
+        RETURN_CODE=$($*)
     } &> /dev/null
-    
     CMD_RETURN_CODE=$?
 
     if [ $CMD_RETURN_CODE == 1 ]; then
         echo -e "${RED}"
-        $@
+        echo $*
     else
-        if [ -z $3 ]; then
-            echo -e "${WHITE}first Lines of $2 ${LIGHT_GREEN}"
-            head --lines=10 $2
-        fi
+        echo -e "${LIGHT_GREEN}"
+        echo $*
     fi
 }
 
@@ -63,25 +60,25 @@ debian_install () {
 common_install() {
     # .zshrc
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---${LIGHT_GREEN}"
-    command files/.zshrc ~/.zshrc
+    shell_command cat files/.zshrc ~/.zshrc
     echo -e "${GREEN} --- Done ---"
     # .bashrc
     echo -e "${YELLOW} --- Mise a jour du .bashrc ---${LIGHT_GREEN}"
-    command files/.bashrc ~/.bashrc
+    shell_command cat files/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
     # .Bookmarks
     echo -e "${YELLOW} --- Mise a jour des bookmarks Brave ---${LIGHT_GREEN}"
-    command files/Bookmarks ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
+    shell_command cat files/Bookmarks ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
     # .Bookmarks
     echo -e "${YELLOW} --- Mise a jour des bookmarks Chrome ---${LIGHT_GREEN}"
-    command files/Bookmarks ~/.config/google-chrome/Default/Bookmarks
-    command files/Bookmarks ~/.config/chromium/Default/Bookmarks
+    shell_command cat files/Bookmarks ~/.config/google-chrome/Default/Bookmarks
+    shell_command cat files/Bookmarks ~/.config/chromium/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
 
     echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
-    shell_command ssh_keys/id_rsa ~/.ssh/id_rsa nooutpout
-    shell_command ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub nooutpout
+    shell_command cat ssh_keys/id_rsa ~/.ssh/id_rsa
+    shell_command cat ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub
     echo -e "${GREEN} --- Done ---"
     # Konsole
     echo -e "${YELLOW} --- Ajout des config Konsole ---${LIGHT_GREEN}"
@@ -89,8 +86,6 @@ common_install() {
     do
         shell_command cp -r files/konsole /home/$i/.local/share/konsole
         shell_command chown -R $i /home/$i/.local/share/konsole
-        shell_command echo /home/$i/.local/share/konsole
-        shell_command ls -la /home/$i/.local/share/konsole
     done
     echo -e "${GREEN} --- Done ---"
 }
