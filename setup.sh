@@ -27,16 +27,36 @@ package_install () {
 
 shell_command () {
     {
-        RETURN_CODE=$($@)
+        COMMAND=$($@)
     } &> /dev/null
+    CMD_RETURN_CODE=$?
+    #echo -e $1 $2 "${@:3}"
+    if [ $CMD_RETURN_CODE == 1 ]; then
+        echo -e "${RED}"
+        echo $@
+    else
+        echo -e "${LIGHT_GREEN}"
+        echo $@
+    fi
+}
+
+cat_files () {
+    {
+        RETURN_CODE=$(cat $1 > $2)
+    } &> /dev/null
+
     CMD_RETURN_CODE=$?
 
     if [ $CMD_RETURN_CODE == 1 ]; then
         echo -e "${RED}"
-        echo $*
+        cat $1 > $2
     else
-        echo -e "${LIGHT_GREEN}"
-        echo $*
+        if [ -z $3 ]; then
+            echo -e "${WHITE}first Lines of $2 ${LIGHT_GREEN}"
+            head --lines=10 $2
+        else
+            echo -e "${WHITE}---- Secret ----${LIGHT_GREEN}"
+        fi
     fi
 }
 
@@ -59,25 +79,25 @@ debian_install () {
 common_install() {
     # .zshrc
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---${LIGHT_GREEN}"
-    shell_command cat files/.zshrc > ~/.zshrc
+    cat_files files/.zshrc ~/.zshrc
     echo -e "${GREEN} --- Done ---"
     # .bashrc
     echo -e "${YELLOW} --- Mise a jour du .bashrc ---${LIGHT_GREEN}"
-    shell_command cat files/.bashrc > ~/.bashrc
+    cat_files files/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
     # .Bookmarks
     echo -e "${YELLOW} --- Mise a jour des bookmarks Brave ---${LIGHT_GREEN}"
-    shell_command cat files/Bookmarks > ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
+    cat_files files/Bookmarks ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
     # .Bookmarks
     echo -e "${YELLOW} --- Mise a jour des bookmarks Chrome ---${LIGHT_GREEN}"
-    shell_command cat files/Bookmarks > ~/.config/google-chrome/Default/Bookmarks
-    shell_command cat files/Bookmarks > ~/.config/chromium/Default/Bookmarks
+    cat_files files/Bookmarks ~/.config/google-chrome/Default/Bookmarks
+    cat_files files/Bookmarks ~/.config/chromium/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
 
     echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
-    shell_command cat ssh_keys/id_rsa > ~/.ssh/id_rsa
-    shell_command cat ssh_keys/id_rsa.pub > ~/.ssh/id_rsa.pub
+    cat_files ssh_keys/id_rsa ~/.ssh/id_rsa secret
+    cat_files ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub secret
     echo -e "${GREEN} --- Done ---"
     # Konsole
     echo -e "${YELLOW} --- Ajout des config Konsole ---${LIGHT_GREEN}"
