@@ -1,29 +1,29 @@
 {
-   "checksum": "77a03c18df45dcb3210113d5d1f53420",
+   "checksum": "fd2cf2a0b71e605e6ebd9b7525ce9810",
    "roots": {
       "bookmark_bar": {
          "children": [ {
+            "date_added": "13307463743146532",
+            "date_last_used": "13311898514098914",
+            "guid": "e64d4698-0089-467a-a087-63275712170a",
+            "id": "2",
+            "name": "ASSURANCES",
+            "type": "url",
+            "url": "https://www.assurancevie.desjardins.com/envoyerdocuments/?utm_campaign=vanity-url&utm_medium=vanity&utm_source=desjardinsassurancevie&utm_content=%2Fenvoi&r=1"
+         }, {
             "date_added": "13294363033000000",
-            "date_last_used": "13312922287410164",
+            "date_last_used": "13314766521335556",
             "guid": "12ad1c72-3df8-4b7f-8218-fb7cb97b7b63",
-            "id": "5",
+            "id": "3",
             "name": "gmail",
             "type": "url",
             "url": "https://mail.google.com/mail/u/0/#search/discord"
          }, {
-            "date_added": "13307463743146532",
-            "date_last_used": "13311898514098914",
-            "guid": "e64d4698-0089-467a-a087-63275712170a",
-            "id": "39",
-            "name": "ASSURANCES",
-            "type": "url",
-            "url": "https://www.assurancevie.desjardins.com/envoyerdocuments/?utm_campaign=vanity-url&utm_medium=vanity&utm_source=desjardinsassurancevie&utm_content=%2Fenvoi&r=1"
-         },  {
             "children": [ {
                "date_added": "13296004294000000",
                "date_last_used": "0",
                "guid": "714af8d5-bb3e-4c3c-9f40-37a54f059dd8",
-               "id": "12",
+               "id": "5",
                "name": "FTX ",
                "type": "url",
                "url": "https://ftx.com/wallet"
@@ -31,7 +31,7 @@
                "date_added": "13295404669000000",
                "date_last_used": "0",
                "guid": "0b088877-cff3-4306-acf8-07891dca42ac",
-               "id": "13",
+               "id": "6",
                "name": "Coinbase",
                "type": "url",
                "url": "https://www.coinbase.com/dashboard"
@@ -39,7 +39,7 @@
                "date_added": "13295404903000000",
                "date_last_used": "0",
                "guid": "f0d5a26b-92a3-43b8-ae89-233ee7dd1874",
-               "id": "14",
+               "id": "7",
                "name": "Paypal",
                "type": "url",
                "url": "https://www.paypal.com/myaccount/summary"
@@ -48,15 +48,15 @@
             "date_last_used": "0",
             "date_modified": "0",
             "guid": "a7301182-0fc7-471f-b6e8-8fbeb8d15040",
-            "id": "11",
+            "id": "4",
             "name": "Crypto",
             "type": "folder"
          }, {
             "children": [ {
                "date_added": "13299724561000000",
-               "date_last_used": "13309702675104680",
+               "date_last_used": "13315940718626223",
                "guid": "5729ce7e-0472-475d-8a4c-2ce69e9f25ac",
-               "id": "24",
+               "id": "9",
                "name": "grosheth",
                "type": "url",
                "url": "https://github.com/grosheth"
@@ -64,7 +64,7 @@
                "date_added": "13299186650000000",
                "date_last_used": "0",
                "guid": "c9201aae-b6cd-4771-9b48-22b8a520892f",
-               "id": "26",
+               "id": "10",
                "name": "Refactoring",
                "type": "url",
                "url": "https://refactoring.guru/fr"
@@ -72,7 +72,7 @@
                "date_added": "13296184042000000",
                "date_last_used": "13313637397847946",
                "guid": "af2c64ec-9c33-42fa-9fc3-3b5ffeda5ba3",
-               "id": "17",
+               "id": "11",
                "name": "discord.py",
                "type": "url",
                "url": "https://discordpy.readthedocs.io/en/latest/index.html"
@@ -80,7 +80,7 @@
                "date_added": "13295301679000000",
                "date_last_used": "13309702444039638",
                "guid": "bf2f90dc-3ee5-4aa6-87de-9f7e36b35bf4",
-               "id": "8",
+               "id": "12",
                "name": "Udemy",
                "type": "url",
                "url": "https://www.udemy.com/"
@@ -88,7 +88,7 @@
                "date_added": "13296178779000000",
                "date_last_used": "0",
                "guid": "2511275f-e00d-437b-a8ee-07e073a46fce",
-               "id": "16",
+               "id": "13",
                "name": "TechWorld with Nana",
                "type": "url",
                "url": "https://techworld-with-nana.teachable.com/courses/enrolled/1108792"
@@ -96,7 +96,7 @@
                "date_added": "13297125626000000",
                "date_last_used": "0",
                "guid": "bbc08921-542a-4f4d-8236-4f60df6f6b57",
-               "id": "20",
+               "id": "14",
                "name": "HackerEarth",
                "type": "url",
                "url": "https://www.hackerearth.com/challenges/"
@@ -104,16 +104,38 @@
                "date_added": "13295575948000000",
                "date_last_used": "0",
                "guid": "e4cf4a73-f6b0-4847-bb53-3c1ad4cede9a",
-               "id": "9",
+               "id": "15",
                "name": "Hacker101",
                "type": "url",
                "url": "https://www.hacker101.com/"
+            }, {
+               "date_added": "13314642444408848",
+               "date_last_used": "0",
+               "guid": "0f738aba-b858-4500-8610-0b5fd16e72c5",
+               "id": "38",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Day 1 - Advent of Code 2022",
+               "type": "url",
+               "url": "https://adventofcode.com/2022/day/1"
+            }, {
+               "date_added": "13314642452196605",
+               "date_last_used": "0",
+               "guid": "49b51ce1-f94b-4e3d-99d9-34bc04de6945",
+               "id": "39",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Advent of Code 2022",
+               "type": "url",
+               "url": "https://adventofcode.com/"
             } ],
             "date_added": "13306592142061109",
             "date_last_used": "0",
-            "date_modified": "13313950770954155",
+            "date_modified": "13316204313496345",
             "guid": "01cfdd12-b945-45bb-860d-3716f7eed787",
-            "id": "29",
+            "id": "8",
             "name": "Code",
             "type": "folder"
          }, {
@@ -121,7 +143,7 @@
                "date_added": "13299362794000000",
                "date_last_used": "0",
                "guid": "fede84ca-8697-42dc-aed5-599492689285",
-               "id": "27",
+               "id": "17",
                "name": "T E X T F I L E S",
                "type": "url",
                "url": "http://www.textfiles.com/humor/"
@@ -129,7 +151,7 @@
                "date_added": "13296869495000000",
                "date_last_used": "0",
                "guid": "4e3b16b9-eb13-4c0d-aa25-70ef30807775",
-               "id": "19",
+               "id": "18",
                "name": "Tap'Touche",
                "type": "url",
                "url": "https://app.taptouche.com/exercises/"
@@ -137,7 +159,7 @@
                "date_added": "13296490902000000",
                "date_last_used": "0",
                "guid": "317d7174-a174-4e82-bfde-02affad6fc0a",
-               "id": "18",
+               "id": "19",
                "name": "Gportal",
                "type": "url",
                "url": "https://www.g-portal.com/int/gamecloud"
@@ -145,7 +167,7 @@
                "date_added": "13295807501000000",
                "date_last_used": "0",
                "guid": "57c45091-24ec-4da0-93be-ff5890f72a16",
-               "id": "10",
+               "id": "20",
                "name": "Claude Crest",
                "type": "url",
                "url": "https://vimeo.com/ondemand/claudecrest/"
@@ -154,7 +176,7 @@
             "date_last_used": "0",
             "date_modified": "13306592929842397",
             "guid": "34fc9b26-1e4e-44d3-b60f-48476e60a4c9",
-            "id": "30",
+            "id": "16",
             "name": "Fun",
             "type": "folder"
          }, {
@@ -162,7 +184,7 @@
                "date_added": "13306593106605111",
                "date_last_used": "13312243588125567",
                "guid": "8bfc9ff3-4ee3-4536-aec8-f5780442570a",
-               "id": "33",
+               "id": "22",
                "name": "Prime Video",
                "type": "url",
                "url": "https://www.primevideo.com/region/na/?ref_=dv_web_force_root"
@@ -170,7 +192,7 @@
                "date_added": "13306592929842397",
                "date_last_used": "13313197602915816",
                "guid": "a6b5ddd3-56e7-4e2d-9a1a-0c7936a964ab",
-               "id": "31",
+               "id": "23",
                "name": "YouTube",
                "type": "url",
                "url": "https://www.youtube.com/"
@@ -178,15 +200,15 @@
                "date_added": "13306593165058749",
                "date_last_used": "0",
                "guid": "a912e7c6-8662-47a4-a5e4-e82711a6db16",
-               "id": "35",
+               "id": "24",
                "name": "Netflix",
                "type": "url",
                "url": "https://www.netflix.com/browse"
             }, {
                "date_added": "13307143857083943",
-               "date_last_used": "13313349034680779",
+               "date_last_used": "13314494981930794",
                "guid": "a519f90f-dce4-4e9f-b37e-cb1512d96ca2",
-               "id": "37",
+               "id": "25",
                "name": "Twitch",
                "type": "url",
                "url": "https://www.twitch.tv/"
@@ -194,7 +216,7 @@
                "date_added": "13311573683252759",
                "date_last_used": "13313317482098283",
                "guid": "6ea9784e-dd00-437d-a89c-8abdac1cb2e8",
-               "id": "45",
+               "id": "26",
                "meta_info": {
                   "power_bookmark_meta": ""
                },
@@ -203,9 +225,9 @@
                "url": "https://www.disneyplus.com/login"
             }, {
                "date_added": "13294363045000000",
-               "date_last_used": "13312935461057047",
+               "date_last_used": "13316253507329960",
                "guid": "6cad05d6-0a85-47fd-83a8-9cbf3f78ed6d",
-               "id": "6",
+               "id": "27",
                "name": "Patreon",
                "type": "url",
                "url": "https://www.patreon.com/home"
@@ -213,7 +235,7 @@
                "date_added": "13298236550000000",
                "date_last_used": "0",
                "guid": "6e7370c5-e02a-426c-b4b1-00ac5cdd4c00",
-               "id": "22",
+               "id": "28",
                "name": "Crunchyroll",
                "type": "url",
                "url": "https://www.crunchyroll.com/"
@@ -221,7 +243,7 @@
                "date_added": "13296058434000000",
                "date_last_used": "0",
                "guid": "09d77569-ad03-4879-a2d8-88fb4abe6ae5",
-               "id": "15",
+               "id": "29",
                "name": "Audible",
                "type": "url",
                "url": "https://www.audible.ca/"
@@ -230,7 +252,7 @@
             "date_last_used": "0",
             "date_modified": "13313950750943243",
             "guid": "4a64d3ae-837b-4995-9799-8b2e693fee94",
-            "id": "34",
+            "id": "21",
             "name": "Streaming",
             "type": "folder"
          }, {
@@ -238,7 +260,7 @@
                "date_added": "13294365895000000",
                "date_last_used": "13312342226241315",
                "guid": "1a3a0217-f5d5-4607-a59a-5a0e45879ec0",
-               "id": "7",
+               "id": "31",
                "name": "ProtonDB",
                "type": "url",
                "url": "https://www.protondb.com/"
@@ -246,7 +268,7 @@
                "date_added": "13313950696159084",
                "date_last_used": "0",
                "guid": "d442ca2d-cc69-4b07-9ad6-c32d30e91eab",
-               "id": "48",
+               "id": "32",
                "meta_info": {
                   "power_bookmark_meta": ""
                },
@@ -257,7 +279,7 @@
                "date_added": "13313950700953304",
                "date_last_used": "0",
                "guid": "88463c51-746f-4817-910e-0c54d8a2d3ee",
-               "id": "49",
+               "id": "33",
                "meta_info": {
                   "power_bookmark_meta": ""
                },
@@ -269,21 +291,32 @@
             "date_last_used": "0",
             "date_modified": "13313950700953304",
             "guid": "90fccc16-7208-45fc-b566-fd5063a844e0",
-            "id": "47",
+            "id": "30",
             "name": "Games",
             "type": "folder"
          }, {
             "date_added": "13309896635202806",
-            "date_last_used": "13313853680865456",
+            "date_last_used": "13316284644881048",
             "guid": "e1c312c5-e0e8-4837-a41d-282d8e87e3e0",
-            "id": "42",
+            "id": "34",
             "name": "Discord",
             "type": "url",
             "url": "https://discord.com/channels/@me"
+         }, {
+            "date_added": "13316204313496345",
+            "date_last_used": "0",
+            "guid": "4dbb4848-6d86-4014-b348-411037fccefd",
+            "id": "41",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "All The Client-Side Mods",
+            "type": "url",
+            "url": "https://www.curseforge.com/minecraft/modpacks/the-client-side-modpack-forge"
          } ],
          "date_added": "13306437826595348",
          "date_last_used": "0",
-         "date_modified": "13313950759427070",
+         "date_modified": "13316204321946326",
          "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
          "id": "1",
          "name": "Bookmarks bar",
@@ -295,7 +328,7 @@
          "date_last_used": "0",
          "date_modified": "0",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
-         "id": "2",
+         "id": "35",
          "name": "Other bookmarks",
          "type": "folder"
       },
@@ -305,7 +338,7 @@
          "date_last_used": "0",
          "date_modified": "0",
          "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
-         "id": "3",
+         "id": "36",
          "name": "Mobile bookmarks",
          "type": "folder"
       }
