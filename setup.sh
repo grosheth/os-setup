@@ -11,8 +11,8 @@ WHITE='\033[1;37m'        # White
 LIGHT_GREEN='\033[0;32m'        # Green
 
 # vars
-PROGRAMS=$(cat programs.txt)
-OS=$(uname -r)
+PROGRAMS=$(cat programs)
+OS=$(uname -r)code 
 USERS=$(ls /home)
 
 
@@ -57,24 +57,28 @@ debian_install () {
 }
 
 common_install() {
+    # Cloner le repo avec les backups
+    git clone git@github.com:grosheth/bookmarks.git
+    
     #source vars
     . vars.sh
+
     # .zshrc
     echo -e "${YELLOW} --- Mise a jour du .zshrc ---${LIGHT_GREEN}"
-    shell_command cp files/.zshrc ~/.zshrc
+    shell_command cp bookmarks/.zshrc ~/.zshrc
     echo -e "${GREEN} --- Done ---"
     # .bashrc
     echo -e "${YELLOW} --- Mise a jour du .bashrc ---${LIGHT_GREEN}"
-    shell_command cp files/.bashrc ~/.bashrc
+    shell_command cp bookmarks/.bashrc ~/.bashrc
     echo -e "${GREEN} --- Done ---"
     # .Bookmarks
     echo -e "${YELLOW} --- Mise a jour des bookmarks Brave ---${LIGHT_GREEN}"
-    shell_command cp files/Bookmarks ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
+    shell_command cp bookmarks/bookmarks* ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
     # .Bookmarks
     echo -e "${YELLOW} --- Mise a jour des bookmarks Chrome ---${LIGHT_GREEN}"
-    shell_command cp files/Bookmarks ~/.config/google-chrome/Default/Bookmarks
-    shell_command cp files/Bookmarks ~/.config/chromium/Default/Bookmarks
+    shell_command cp bookmarks/bookmarks* ~/.config/google-chrome/Default/Bookmarks
+    shell_command cp bookmarks/bookmarks* ~/.config/chromium/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
 
     echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
@@ -85,7 +89,7 @@ common_install() {
     echo -e "${YELLOW} --- Ajout des config Konsole ---${LIGHT_GREEN}"
     for i in $USERS
     do
-        shell_command cp -r files/konsole /home/$i/.local/share/konsole
+        shell_command cp -r bookmarks/konsole /home/$i/.local/share/konsole
         shell_command chown -R $i /home/$i/.local/share/konsole
     done
     echo -e "${GREEN} --- Done ---"
