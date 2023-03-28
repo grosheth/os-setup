@@ -81,11 +81,9 @@ common_install() {
     shell_command cp bookmarks/bookmarks* ~/.config/chromium/Default/Bookmarks
     echo -e "${GREEN} --- Done ---"
 
-    echo -e "${YELLOW} --- Mise a jour des clées ssh ---${LIGHT_GREEN}"
-    shell_command cp ssh_keys/id_rsa ~/.ssh/id_rsa
-    shell_command cp ssh_keys/id_rsa.pub ~/.ssh/id_rsa.pub
-    echo -e "${GREEN} --- Done ---"
-    # Konsole
+    ##############################
+    # Should check if DE is KDE #
+    ##############################
     echo -e "${YELLOW} --- Ajout des config Konsole ---${LIGHT_GREEN}"
     for i in $USERS
     do
@@ -102,10 +100,10 @@ common_install() {
 
 echo "Did you put your ssh keys in the folder?"
 
-read  -n 1 -p "Y/N:" input
+read -n 1 -p "y/n:" INPUT
 
 
-if [input == "Y"] || [input == "y"]; then
+if [ $INPUT == "y" ] || [ $INPUT == "Y" ]; then
     if  grep -q "arch" <<< "$OS"; then
         echo -e "${CYAN} Your system is $OS"
         sleep 2
@@ -115,10 +113,9 @@ if [input == "Y"] || [input == "y"]; then
         sleep 2
         debian_install
     fi
+    echo -e "${CYAN} --- Installation done --- ${WHITE} "
 else
+    echo -e ""
+    echo -e "Create and keys before running the script"
+fi
 
-echo "Create and keys before running the script"
-
-
-
-echo -e "${CYAN} --- Installation done ---"
