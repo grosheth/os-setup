@@ -100,16 +100,17 @@ common_install() {
     echo -e "${GREEN} --- Done ---"
 }
 
-if grep -q "arch" <<< "$OS"; then
-  echo -e "${CYAN} Your system is $OS"
-  sleep 2
-  arch_install
+if  grep -q "arch" <<< "$OS"; then
+    echo -e "${CYAN} Your system is $OS"
+    sleep 2
+    arch_install
+else
+    echo -e "${CYAN} Your system is $OS"
+    sleep 2
+    debian_install
 fi
 
-if grep -q "debian" <<< "$OS"; then
-  echo -e "${CYAN} Your system is $OS"
-  sleep 2
-  debian_install
-fi
+
+
 
 echo -e "${CYAN} --- Installation done ---"
