@@ -100,16 +100,24 @@ common_install() {
     echo -e "${GREEN} --- Done ---"
 }
 
-if  grep -q "arch" <<< "$OS"; then
-    echo -e "${CYAN} Your system is $OS"
-    sleep 2
-    arch_install
-else
-    echo -e "${CYAN} Your system is $OS"
-    sleep 2
-    debian_install
-fi
+echo "Did you put your ssh keys in the folder?"
 
+read  -n 1 -p "Y/N:" input
+
+
+if [input == "Y"] || [input == "y"]; then
+    if  grep -q "arch" <<< "$OS"; then
+        echo -e "${CYAN} Your system is $OS"
+        sleep 2
+        arch_install
+    else
+        echo -e "${CYAN} Your system is $OS"
+        sleep 2
+        debian_install
+    fi
+else
+
+echo "Create and keys before running the script"
 
 
 
