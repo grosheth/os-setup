@@ -56,10 +56,17 @@ debian_install () {
     common_install
 }
 
+redhat_install () {
+    sudo dnf update -q
+    package_install dnf install -q
+    common_install
+}
+
+
 common_install() {
     # Cloner le repo avec les backups
     git clone git@github.com:grosheth/bookmarks.git
-    
+
     #source vars
     . vars.sh
 
@@ -111,7 +118,8 @@ if [ $INPUT == "y" ] || [ $INPUT == "Y" ]; then
     else
         echo -e "${CYAN} Your system is $OS"
         sleep 2
-        debian_install
+        redhat_install
+        #debian_install
     fi
     echo -e "${CYAN} --- Installation done --- ${WHITE} "
 else
